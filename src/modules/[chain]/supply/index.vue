@@ -4,8 +4,9 @@ import { useBaseStore, useBlockchain, useFormatter } from '@/stores';
 import { PageRequest, type AuthAccount, type Pagination, type Coin } from '@/types';
 import { onMounted } from 'vue';
 import PaginationBar from '@/components/PaginationBar.vue';
-const props = defineProps(['chain']);
 
+const props = defineProps(['chain']);
+const formatter = useFormatter();
 const format = useFormatter();
 const chainStore = useBlockchain()
 
@@ -30,6 +31,15 @@ function pageload(p: number) {
   });
 }
 
+const blockchain = useBlockchain()
+
+function tokenConfig(token: Coin) {
+  return blockchain.current?.assets?.find(
+    // @ts-ignore
+    (x) => x.base === token.denom || x.base.denom === token.denom
+  )
+}
+
 </script>
 <template>
     <div class="overflow-auto bg-base-100">
@@ -41,8 +51,8 @@ function pageload(p: number) {
                 </tr>
             </thead>
             <tr v-for="item in list" class="hover">
-                <td>{{ item.denom  }}</td>
-                <td>{{ item.amount  }}</td>
+                <td>{{ tokenConfig(item).display  }}</td>
+                <td>{{ formatter.formatTokenAmount(item)  }}</td>
             </tr>
         </table>
         <PaginationBar :limit="pageRequest.limit" :total="pageResponse.total" :callback="pageload" />

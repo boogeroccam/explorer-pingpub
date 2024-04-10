@@ -3,20 +3,14 @@ name: docker
 on:
   push:
     branches:
-      - 'master-backup'
+      - 'master'
 
 jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-#      -
-#        name: Set up QEMU
-#        uses: docker/setup-qemu-action@v1
-#      -
-#        name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v1
+        uses: actions/checkout@v4
       - name: Install
         run: yarn install
       - name: Build
@@ -26,13 +20,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: registry.fulgur.tech
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
         with:
           # list of Docker images to use as base name for tags
           images: |
-            yaoling/wallet
+            registry.fulgur.tech/galactica/explorer-pingpub
           # generate Docker tags based on the following events/attributes
           tags: |
             type=sha
