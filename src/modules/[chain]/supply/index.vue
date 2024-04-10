@@ -51,7 +51,7 @@ function tokenConfig(token: Coin) {
                 </tr>
             </thead>
             <tr v-for="item in list" class="hover">
-                <td>{{ tokenConfig(item).display  }}</td>
+                <td>{{ tokenConfig(item)?.display ?? item.denom  }}</td>
                 <td>{{ formatter.formatTokenAmount(item)  }}</td>
             </tr>
         </table>
