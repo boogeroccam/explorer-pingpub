@@ -18,10 +18,12 @@ COPY . .
 # build the app
 RUN yarn build
 
-FROM nginx:1.21.1-alpine
+FROM nginx:stable-alpine
 
 # copy the dist folder from build to nginx
 COPY --from=build /app/dist /usr/share/nginx/html
+
+COPY ./docker/nginx/etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 
 # expose port 80
 EXPOSE 80
