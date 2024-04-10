@@ -12,9 +12,9 @@ jobs:
       DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
       DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: TooMuch4U/runner-post-cleanup@v2.1
       - name: deploy
         run: |
           temp_file=$(mktemp)
