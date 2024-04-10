@@ -1,0 +1,23 @@
+name: Deploy on reticulum network
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    uses: ./.github/workflows/docker.yaml
+    secrets:
+      DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TooMuch4U/runner-post-cleanup@v2.1
+      - name: deploy
+        run: |
+          temp_file=$(mktemp)
+          echo ${{ secrets.SSH_KEY }} | base64 -d > $temp_file
+          ssh -o StrictHostKeychecking=no -o UserKnownHostsFile=/dev/null -i $temp_file ${{ secrets.SSH_HOST }} "`echo "${{ secrets.SSH_SCRIPT }}" | base64 -d | gzip -d`"
+          rm -f $temp_file

@@ -1,9 +1,10 @@
 name: docker
 
 on:
-  push:
-    branches:
-      - 'master'
+  workflow_call:
+    secrets:
+      DOCKER_REGISTRY_USERNAME:
+      DOCKER_REGISTRY_PASSWORD:
 
 jobs:
   docker:
