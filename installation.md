@@ -43,7 +43,7 @@ docker run -d -p 8088:80 ping.pub/dashboard
 # Enable LCD for Ping.pub (do this on the config for your chain)
 
 1. Set `enable = true` in `./config/app.toml`
-```
+```ini
 ###############################################################################
 ###                           API Configuration                             ###
 ###############################################################################
