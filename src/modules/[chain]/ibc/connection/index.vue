@@ -4,11 +4,11 @@
 <template>
     <div></div>
 </template>
-<route>
-    {
-      meta: {
-        i18n: 'ibc',
-        order: 9
-      }
-    }
-  </route>
+<!--<route>-->
+<!--    {-->
+<!--      meta: {-->
+<!--        i18n: 'ibc',-->
+<!--        order: 9-->
+<!--      }-->
+<!--    }-->
+<!--  </route>-->
