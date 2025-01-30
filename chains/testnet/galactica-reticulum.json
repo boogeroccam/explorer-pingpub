@@ -2,10 +2,10 @@
     "chain_name": "galactica-reticulum",
     "registry_name": "galactica-reticulum",
     "api": [
-        {"provider": "galactica", "address": "https://rpc.galactica.aknodes.net"}
+        {"provider": "galactica", "address": "https://galactica-testnet-api.ibs.team"}
     ],
     "rpc": [
-        {"provider": "galactica", "address": "https://rpc.galactica.aknodes.net"}
+        {"provider": "galactica", "address": "https://galactica-testnet-api.ibs.team"}
     ],
     "sdk_version": "v0.47.3",
     "coin_type": "60",
