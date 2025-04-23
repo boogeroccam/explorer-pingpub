@@ -1,0 +1,35 @@
+{
+    "chain_name": "galactica-cassipeia",
+    "registry_name": "galactica-cassipeia",
+    "api": [
+        {"provider": "galactica", "address": "https://lcd-cassipeia.galactica.com"}
+    ],
+    "rpc": [
+        {"provider": "galactica", "address": "https://rpc-cassipeia.galactica.com"}
+    ],
+    "sdk_version": "v0.47.3",
+    "coin_type": "60",
+    "min_tx_fee": "10",
+    "addr_prefix": "gala",
+    "logo": "/logos/galactica.png",
+    "cosmwasm_enabled": false,
+    "assets": [{
+        "base": "agnet",
+        "symbol": "GNET",
+        "exponent": "18",
+        "coingecko_id": "galactica-network",
+        "logo": "/logos/galactica.png"
+    }],
+    "theme_color": "#f28056",
+    "keplr_features": [
+        "ibc-transfer",
+        "ibc-go",
+        "eth-address-gen",
+        "eth-key-sign"
+    ],
+    "keplr_price_step": {
+        "low": 10,
+        "average": 100,
+        "high": 1000
+    }
+}
